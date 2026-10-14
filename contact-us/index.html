@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us - Hughes Clearing Co.</title>
+<meta name="description" content="Contact Hughes Clearing Co. for land clearing, forestry mulching, brush hogging and dirt work in Tyler and East Texas. Call (903) 245-9344.">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body class="home-body">
+
+<div class="nav-wrapper" id="nav">
+  <nav class="top-bar">
+    <a href="../" class="brand" aria-label="Hughes Clearing home">
+      <img class="logo" src="../images/logo.png" alt="Hughes Clearing" onerror="this.remove();document.querySelector('.text-logo').style.display='block'">
+      <img class="logo-icon" src="../images/logo-icon.png" alt="Hughes Clearing" onerror="this.remove()">
+      <span class="text-logo">Hughes Clearing<small>Co. · Tyler, TX</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">Menu <span class="bars"></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="../">Home</a></li>
+      <li><a href="../about-us/">About Us</a></li>
+      <li class="has-dropdown"><a href="#" id="servicesLink">Services</a>
+        <ul class="dropdown">
+          <li><a href="../services/overview/">Overview</a></li>
+          <li><a href="../land-clearing-in-tyler-tx/">Land Clearing</a></li>
+          <li><a href="../forestry-mulching-in-tyler-tx/">Forestry Mulching</a></li>
+          <li><a href="../bush-hogging-in-tyler-tx/">Brush Hogging</a></li>
+          <li><a href="../dirt-work-in-tyler-tx/">Dirt Work</a></li>
+          <li><a href="../services/site-preparation/">Site Preparation</a></li>
+        </ul>
+      </li>
+      <li><a href="../our-work/">Our Work</a></li>
+      <li><a href="../contact-us/">Contact Us</a></li>
+      <li><a href="tel:9032459344">(903) 245-9344</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="pageHeader"><div class="row text-center"><h1>Contact Us</h1></div></div>
+
+<div class="contentMain">
+  <div class="row contact-grid">
+    <div>
+      <p><strong>Phone</strong><br><a href="tel:9032459344">(903) 245-9344</a></p>
+      <p><strong>E-Mail</strong><br><a href="mailto:Info@HughesClearing.com">Info@HughesClearing.com</a></p>
+      <p><strong>Mailing Address</strong><br>6146 CR 2297<br>Whitehouse, Texas 75791</p>
+      <p><strong>Operating Hours</strong><br>Monday-Friday: 8am-5pm<br>Saturday: 10am-5pm</p>
+    </div>
+    <div>
+      <!-- To have submissions emailed to you automatically, set data-endpoint to a form
+           service URL (for example a Formspree form: https://formspree.io/f/XXXXXXX).
+           Left blank, Submit opens the visitor's email app pre-filled to Info@HughesClearing.com. -->
+      <form id="ContactForm" data-endpoint="" data-to="Info@HughesClearing.com" novalidate>
+        <label>Name<input type="text" name="name"></label>
+        <div class="form-row">
+          <label>Email*<input id="email" type="email" name="email" required></label>
+          <label>Phone<input type="tel" name="phone"></label>
+        </div>
+        <label>Message<textarea rows="5" name="message"></textarea></label>
+        <br>
+        <button type="submit" class="button" id="submitButton">Submit</button>
+        <p class="form-status" id="formStatus" role="status"></p>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const f=document.getElementById('ContactForm'),st=document.getElementById('formStatus');
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const email=f.email.value.trim();
+    if(!email||!f.email.checkValidity()){st.textContent='Please enter a valid email address.';f.email.focus();return;}
+    const d=Object.fromEntries(new FormData(f));
+    const ep=f.dataset.endpoint;
+    if(ep){
+      st.textContent='Sending…';
+      try{
+        const r=await fetch(ep,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
+        if(r.ok){f.reset();st.textContent='Thanks! We received your message and will be in touch soon.';}
+        else st.textContent='Something went wrong. Please call (903) 245-9344.';
+      }catch(_){st.textContent='Something went wrong. Please call (903) 245-9344.';}
+    }else{
+      const body=`Name: ${d.name||''}\nEmail: ${d.email}\nPhone: ${d.phone||''}\n\n${d.message||''}`;
+      location.href=`mailto:${f.dataset.to}?subject=${encodeURIComponent('Website inquiry from '+(d.name||d.email))}&body=${encodeURIComponent(body)}`;
+      st.textContent='Opening your email app…';
+    }
+  });
+})();
+</script>
+
+<div class="footer">
+  <div class="expanded-width">
+    <ul class="cols">
+      <li>
+        <a href="../"><img class="footer-logo" src="../images/logo.png" alt="Hughes Clearing Co." onerror="this.remove()"></a>
+        <p><strong>Operating Hours</strong><br>Monday-Friday: 8am-5pm<br>Saturday: 10am-5pm</p>
+        <p>©<span id="yr">2026</span> Hughes Clearing Co.</p>
+      </li>
+      <li>
+        <h4>Get In Touch</h4>
+        <p><strong>Phone</strong><br><a href="tel:9032459344">(903) 245-9344</a></p>
+        <p><strong>Email</strong><br><a href="mailto:Info@HughesClearing.com">Info@HughesClearing.com</a></p>
+        <p><strong>Mailing Address</strong><br>6146 CR 2297<br>Whitehouse, Texas 75791</p>
+      </li>
+      <li>
+        <h4>Provided Services</h4>
+        <ul>
+          <li><a href="../land-clearing-in-tyler-tx/"><strong>Land Clearing</strong> in Tyler, TX</a></li>
+          <li><a href="../forestry-mulching-in-tyler-tx/"><strong>Forestry Mulching</strong> in Tyler, TX</a></li>
+          <li><a href="../bush-hogging-in-tyler-tx/"><strong>Bush Hogging</strong> in Tyler, TX</a></li>
+          <li><a href="../dirt-work-in-tyler-tx/"><strong>Dirt Work</strong> in Tyler, TX</a></li>
+        </ul>
+        <a href="../contact-us/" class="button tiny">Request Service Now</a>
+      </li>
+      <li>
+        <h4>Land Clearing In...</h4>
+        <ul>
+          <li><a href="../location/dirt-work-land-clearing-in-longview-tx">Land Clearing in <strong>Longview, TX</strong></a></li>
+          <li><a href="../location/dirt-work-land-clearing-in-bullard-tx">Land Clearing in <strong>Bullard, TX</strong></a></li>
+          <li><a href="../location/dirt-work-and-land-clearing-in-gladewater-tx">Land Clearing in <strong>Gladewater, TX</strong></a></li>
+          <li><a href="../location/dirt-work-and-land-clearing-in-henderson-tx">Land Clearing in <strong>Henderson, TX</strong></a></li>
+          <li><a href="../location/dirt-work-and-land-clearing-in-kilgore-tx">Land Clearing in <strong>Kilgore, TX</strong></a></li>
+          <li><a href="../location/dirt-work-and-land-clearing-in-lindale-tx">Land Clearing in <strong>Lindale, TX</strong></a></li>
+          <li><a href="../location/dirt-work-and-land-clearing-in-whitehouse-tx">Land Clearing in <strong>Whitehouse, TX</strong></a></li>
+          <li><a href="../location/dirt-work-and-land-clearing-in-white-oak-tx">Land Clearing in <strong>White Oak, TX</strong></a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  // Nav turns solid navy once you scroll (same as original)
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('active',window.scrollY>0);
+  window.addEventListener('scroll',onScroll);onScroll();
+
+  // Mobile menu
+  const menu=document.getElementById('menu');
+  document.getElementById('menuToggle').addEventListener('click',()=>menu.classList.toggle('open'));
+  document.getElementById('servicesLink').addEventListener('click',e=>{e.preventDefault();e.currentTarget.parentElement.classList.toggle('open');});
+
+  // Tab icons: use the original PNGs if present, otherwise a stand-in icon
+  document.querySelectorAll('.tab-title img').forEach(img=>{
+    img.addEventListener('error',()=>{const i=document.createElement('i');i.className='fa-solid fa-ico '+img.dataset.fa;img.replaceWith(i);});
+    if(img.complete&&img.naturalWidth===0)img.dispatchEvent(new Event('error'));
+  });
+
+  // Service tabs
+  document.querySelectorAll('.tab-title').forEach(t=>{
+    t.querySelector('a').addEventListener('click',e=>{
+      e.preventDefault();
+      document.querySelectorAll('.tab-title').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.tabs-content .content').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');document.getElementById(t.dataset.panel).classList.add('active');
+    });
+  });
+
+  // Hide the video element if the file isn't there, so the poster/fallback shows
+  const v=document.getElementById('background');
+  if(v)v.querySelector('source').addEventListener('error',()=>v.remove());
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
